@@ -12,7 +12,7 @@
 
 <script>
   import { mapState, mapActions } from 'vuex';
-  import * as types from './store/mutation-types';
+  import { ADD_TASK } from './store/mutation-types';
   import Item from './Item.vue';
 
   export default {
@@ -28,7 +28,7 @@
     },
     methods: {
       ...mapActions([
-        types.ADD_TASK
+        ADD_TASK
       ])
     }
   }

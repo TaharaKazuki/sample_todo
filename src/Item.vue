@@ -3,13 +3,14 @@
 </template>
 <script>
   import { mapActions } from 'vuex';
-  import * as types from './store/mutation-types';
+  import { DONE_TASK, DELETE_TASK } from './store/mutation-types';
+
   export default {
     props:{ item: Object },
     methods: {
       ...mapActions([
-        types.DONE_TASK,
-        types.DELETE_TASK
+        DONE_TASK,
+        DELETE_TASK
       ])
     }
   }
