@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import * as types from './mutation-types';
+import { ADD_TASK, DONE_TASK, DELETE_TASK } from './mutation-types';
 
 Vue.use(Vuex);
 
@@ -13,29 +13,29 @@ const store = new Vuex.Store({
     ]
   },
   actions: {
-    [types.ADD_TASK] ({ commit }, title ) {
+    [ADD_TASK] ({ commit }, title ) {
       const newItem = {
         title,
         is_do:false,
       };
-      commit( types.ADD_TASK,{ data: newItem });
+      commit( ADD_TASK,{ data: newItem });
     },
-    [types.DONE_TASK] ({ commit }, item ) {
-      commit( types.DONE_TASK, { data: item });
+    [DONE_TASK] ({ commit }, item ) {
+      commit( DONE_TASK, { data: item });
     },
-    [types.DELETE_TASK] ({ commit }, item ) {
-      commit( types.DELETE_TASK, { data: item });
+    [DELETE_TASK] ({ commit }, item ) {
+      commit( DELETE_TASK, { data: item });
     }
   },
   mutations: {
-    [types.ADD_TASK] ( state, payload ) {
+    [ADD_TASK] ( state, payload ) {
       state.items.push(payload.data)
     },
-    [types.DONE_TASK] (state, payload) {
+    [DONE_TASK] (state, payload) {
       const index = state.items.indexOf(payload.data);
       state.items[index].is_do = !payload.data.is_do;
     },
-    [types.DELETE_TASK] (state, payload) {
+    [DELETE_TASK] (state, payload) {
       const index = state.items.indexOf(payload.data);
       state.items.splice(index, 1);
     }
